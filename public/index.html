@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">TECHNOVA · PRODUCT ENGINEERING LAB</p>
+      <h1>College Management System</h1>
+      <p class="subtitle">Starter module: manage student records</p>
+    </div>
+  </header>
+
+  <main class="page-layout">
+    <section class="panel">
+      <h2 id="form-title">Add a student</h2>
+      <p class="muted">Enter the student details, then save the record.</p>
+
+      <!-- The JavaScript handles submission without refreshing the page. -->
+      <form id="student-form">
+        <input type="hidden" id="student-id">
+
+        <label for="full-name">Full name</label>
+        <input id="full-name" name="full_name" maxlength="100" required
+               placeholder="e.g. Aarav Patel">
+
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" maxlength="150" required
+               placeholder="student@example.com">
+
+        <label for="course">Course</label>
+        <select id="course" name="course" required>
+          <option value="">Choose a course</option>
+          <option value="MCA">MCA</option>
+          <option value="BCA">BCA</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc IT">B.Sc IT</option>
+          <option value="MBA">MBA</option>
+        </select>
+
+        <label for="semester">Semester</label>
+        <input id="semester" name="semester" type="number" min="1" max="12"
+               step="1" required placeholder="1 to 12">
+
+        <div class="button-row">
+          <button type="submit" id="save-button">Save student</button>
+          <button type="button" id="cancel-edit" class="secondary hidden">Cancel edit</button>
+        </div>
+      </form>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <div class="list-heading">
+        <div>
+          <h2>Student records</h2>
+          <p class="muted">Records loaded from the MySQL database.</p>
+        </div>
+        <button type="button" id="refresh-button" class="secondary">Refresh</button>
+      </div>
+
+      <label for="search">Search by name, email, or course</label>
+      <input id="search" type="search" placeholder="Start typing to filter records">
+
+      <p id="student-count" class="muted">Loading students...</p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Course</th>
+              <th>Semester</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="students-table-body">
+            <!-- JavaScript inserts student rows here. -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>Classroom starter project · Use fictional data during practice.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
